@@ -1,4 +1,3 @@
-#Express Framework for Get Requests and Post Requests:
 var express=require("express");
 var app=express();
 //lets define these routes and create these 
@@ -19,12 +18,19 @@ app.get("/dog",function(request,response){
 	console.log("someone posts a get request");
 	response.send("Meow");
 });
-app.get("/rahul",function(request,response){
+app.get("/r/:subRedditName",function(request,response){
 	//request is an object that has info of thereq and res //contains all the info we respond with
 	console.log("someone posts a get request");
-	response.send("Good Night Rahul :)");
+	response.send("Welcome to subreddit");
 });
 //After this we tell express to listen for requests(start //server)
+//when the route is not found for all the other routes we can 
+//keep a * symbol so that we can get to this route!
+app.get("*",function(request,response){
+	//request is an object that has info of thereq and res //contains all the info we respond with
+	console.log("someone posts a get request");
+	response.send("You are a star");
+});
 app.listen(3000,function(){
 	console.log("server listening to port 3000");
 });
